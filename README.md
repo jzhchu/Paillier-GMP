@@ -3,11 +3,7 @@ Paillier-GMP
 
 ## Overview
 
-
-
 **this repository is forked by [GitHub - camillevuillaume/Paillier-GMP: Implementation of the Paillier homomorphic cryptosystem using GMP](https://github.com/camillevuillaume/Paillier-GMP) **
-
-
 
 The Paillier cryptosystem is a public-key cryptosystem with a very interesting property: given the encryption of two messages m1 and m2, anybody can compute the encryption of m1+m2! There are multiple applications, including for instance secure electronic voting, or private information retrieval, where one can query a database without the database knowing which element has been retrieved, and far more.
 While there are other cryptosystems like pairing-based cryptography where it is also possible to compute one addition on top of additions, and even fully homomorphic cryptosystems, the Paillier cryptosystem has the advantage of being relatively simple, efficient and is based on well-understood mathematics. Furthermore, it is sufficient for many applications.
@@ -114,16 +110,50 @@ Here is an example of a sequence of interpreter command executions.
 
 Should yield 0xb=11=5+6.
 
-## Building the program
+## Build Paillier-GMP
 
 Make options:
 
-- "make all" will build the documentation, the interpreter and the shared library.
+- "make all" will build the interpreter, shared library and static library.
 - "make release" will build the interpreter and the shared library.
 - "make standalone" will build the interpreter as standalone module, without the shared library.
-- "make lib" will build the shared library, but not the interpreter.
-- "make doc" will build the documentation.
+- "make sharedlib" will build the shared library only.
+- "make staticlib" will build the static library only.
 - "make debug" will build the shared library and the interpreter with debug symbols.
+
+## Install Paillier-GMP
+
+If you want to install this library into your OS, you can simply use:
+
+```
+$ make install
+```
+
+You can install everything somewhere else by setting `PREFIX` environment variable. For example:
+
+```
+$ mkdir exampleInstallRoot
+$ export $PREFIX=$PWD/exampleInstallRoot
+$ make install
+# you may want to reset or unset $PREFIX after install
+$ unset PREFIX
+```
+
+Then everything will be in this directory, like:
+
+```
+$ tree ./exampleInstallRoot
+./exampleInstallRoot/
+├── bin
+│   └── paillier
+├── include
+│   └── paillier.h
+└── lib
+    ├── libpaillier.a
+    └── libpaillier.so
+
+3 directories, 4 files
+```
 
 ## Warning
 
