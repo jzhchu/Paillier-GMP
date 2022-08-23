@@ -26,6 +26,11 @@
 #ifndef PAILLIER_H_
 #define PAILLIER_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <stdio.h>
 #include <gmp.h>
 
@@ -261,5 +266,9 @@ int paillier_homomorphic_multc_str(
 		FILE *ciphertext1,
 		FILE *plaintext,
 		FILE *public_key);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PAILLIER_H_ */
